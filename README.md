@@ -30,7 +30,7 @@
 
 ### Association
 - belongs_to :users
-- has_many :purchases
+- has_one :purchase
 
 ## Purchasesテーブル
 | Column              | Type       | Options                        |
@@ -41,18 +41,18 @@
 ### Association
 - belongs_to :items
 - belongs_to :users
-- has_one :addresses
+- has_one :address
 
 ## Addressesテーブル
 | Column              | Type       | Options                        |
 | ------------        | ---------- | ------------------------------ |
-| postcode            | integer    | null: false                    |
+| postcode            | string     | null: false                    |
 | shipping_area_id    | integer    | null: false                    |
 | city                | string     | null: false                    |
 | address1            | string     | null: false                    |
 | address2            | string     |                                |
-| tel                 | integer    | null: false                    |
+| tel                 | string     | null: false                    |
 | purchase            | references | null: false, foreign_kry: true |
 
 ### Association
-- has_one :purchases
+- belongs_to :purchase
