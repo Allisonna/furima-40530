@@ -109,10 +109,10 @@
                 <mxCell id="89" value="has_many :items&lt;br&gt;has_many :purchases" style="shape=note;size=20;whiteSpace=wrap;html=1;" vertex="1" parent="1">
                     <mxGeometry x="450" y="70" width="130" height="60" as="geometry"/>
                 </mxCell>
-                <mxCell id="90" value="belongs_to :users&lt;br&gt;has_one :purchase" style="shape=note;size=20;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                <mxCell id="90" value="belongs_to :user&lt;br&gt;has_one :purchase" style="shape=note;size=20;whiteSpace=wrap;html=1;" vertex="1" parent="1">
                     <mxGeometry x="740" y="70" width="130" height="60" as="geometry"/>
                 </mxCell>
-                <mxCell id="95" value="belongs_to :items&lt;br&gt;belongs_to :users&lt;br&gt;has_one :address" style="shape=note;size=20;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                <mxCell id="95" value="belongs_to :item&lt;br&gt;belongs_to :user&lt;br&gt;has_one :address" style="shape=note;size=20;whiteSpace=wrap;html=1;" vertex="1" parent="1">
                     <mxGeometry x="450" y="500" width="130" height="60" as="geometry"/>
                 </mxCell>
                 <mxCell id="97" value="" style="edgeStyle=entityRelationEdgeStyle;fontSize=12;html=1;endArrow=ERmandOne;startArrow=ERmandOne;exitX=1;exitY=0.097;exitDx=0;exitDy=0;exitPerimeter=0;entryX=-0.009;entryY=0.134;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="79" target="22">

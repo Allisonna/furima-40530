@@ -29,7 +29,7 @@
 | user                | references | null: false, foreign_key: true |
 
 ### Association
-- belongs_to :users
+- belongs_to :user
 - has_one :purchase
 
 ## Purchasesテーブル
@@ -39,8 +39,8 @@
 | item                | references | null: false, foreign_key: true |
 
 ### Association
-- belongs_to :items
-- belongs_to :users
+- belongs_to :item
+- belongs_to :user
 - has_one :address
 
 ## Addressesテーブル
@@ -52,7 +52,7 @@
 | address1            | string     | null: false                    |
 | address2            | string     |                                |
 | tel                 | string     | null: false                    |
-| purchase            | references | null: false, foreign_kry: true |
+| purchase            | references | null: false, foreign_key: true |
 
 ### Association
 - belongs_to :purchase
