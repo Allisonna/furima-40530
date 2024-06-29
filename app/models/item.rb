@@ -17,4 +17,7 @@ class Item < ApplicationRecord
   validates :shipping_area_id, numericality: { other_than: 1 , message: "can't be blank"} 
   validates :shipping_day_id, numericality: { other_than: 1 , message: "can't be blank"} 
   validates :price, numericality: { only_integer: true, greater_than_or_equal_to: 300, less_than_or_equal_to: 9_999_999, message: "は¥300〜¥9,999,999の間でなければなりません" }
+
+  validates :image, presence: true
+  validates :user, presence: true
 end
