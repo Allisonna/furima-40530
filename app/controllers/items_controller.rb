@@ -1,14 +1,10 @@
 class ItemsController < ApplicationController
   def index
-    @items = Item.all
+    # @items = Item.all
   end
 
   def new
     @item = Item.new
-    respond_to do |format|
-      format.html  # new.html.erb
-      format.js    # new.js.erb
-    end
   end
 
   def create
