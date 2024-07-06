@@ -1,5 +1,6 @@
 class ItemsController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
+  before_action :set_item, only: [:show, :edit, :update]
   before_action :redirect_if_not_author, only: [:edit, :update]
 
   def index
@@ -41,8 +42,11 @@ class ItemsController < ApplicationController
 
   private
 
-  def redirect_if_not_author
+  def set_item
     @item = Item.find(params[:id])
+  end
+
+  def redirect_if_not_author
     unless current_user.id == @item.user_id
       redirect_to root_path
     end
