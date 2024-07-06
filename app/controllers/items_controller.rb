@@ -1,5 +1,6 @@
 class ItemsController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
+  before_action :redirect_if_not_author, only: [:edit, :update]
 
   def index
     @items = Item.order(created_at: :desc)
@@ -39,6 +40,13 @@ class ItemsController < ApplicationController
   end
 
   private
+
+  def redirect_if_not_author
+    @item = Item.find(params[:id])
+    unless current_user.id == @item.user_id
+      redirect_to root_path
+    end
+  end
 
   def item_params
     params.require(:item).permit(:image, :title, :content, :category_id, :status_id, :shipping_cost_id, :shipping_area_id,
