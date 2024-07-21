@@ -17,6 +17,7 @@ test:
   password:
   host: localhost
   database: furima_40530_test
+  encoding: utf8
 
 production:
   <<: *default

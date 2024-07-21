@@ -2,6 +2,7 @@ class ItemsController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
   before_action :set_item, only: [:show, :edit, :update, :destroy]
   before_action :redirect_if_not_author, only: [:edit, :update, :destroy]
+  before_action :redirect_if_sold_out, only: [:edit, :update]
 
   def index
     @items = Item.order(created_at: :desc)
@@ -9,6 +10,10 @@ class ItemsController < ApplicationController
 
   def new
     @item = Item.new
+    respond_to do |format|
+      format.html  # new.html.erb
+      format.js    # new.js.erb
+    end
   end
 
   def create
@@ -34,6 +39,10 @@ class ItemsController < ApplicationController
     end
   end
 
+  def sold_out?
+    sold_out
+  end
+
   def destroy
     @item.destroy
     redirect_to root_path
@@ -46,9 +55,15 @@ class ItemsController < ApplicationController
   end
 
   def redirect_if_not_author
-    unless current_user.id == @item.user_id
-      redirect_to root_path
-    end
+    return if current_user.id == @item.user_id
+
+    redirect_to root_path
+  end
+
+  def redirect_if_sold_out
+    return unless @item.sold_out? && current_user.id == @item.user.id
+
+    redirect_to root_path, alert: '売却済み商品の編集はできません。'
   end
 
   def item_params
