@@ -8,7 +8,7 @@ class PurchaseAddress
     validates :item_id
     validates :city
     validates :address1
-    validates :tel, format: { with: /\A\d+\z/, message: 'はハイフン無しの数字のみ入力してください' }
+    validates :tel, format: { with: /\A\d{10,11}\z/, message: 'は10または11桁の数字のみ入力してください' }
     validates :token
   end
   validates :shipping_area_id, numericality: { other_than: 1, message: "can't be blank" }
