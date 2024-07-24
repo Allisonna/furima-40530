@@ -29,7 +29,7 @@ RSpec.describe PurchaseAddress, type: :model do
         expect(@purchase_address.errors.full_messages).to include('Postcode is invalid. Include hyphen(-)')
       end
       it 'shipping_area_idを選択していないと保存できないこと' do
-        @purchase_address.shipping_area_id = 0
+        @purchase_address.shipping_area_id = 1
         @purchase_address.valid?
         expect(@purchase_address.errors.full_messages).to include("Shipping area can't be blank")
       end
